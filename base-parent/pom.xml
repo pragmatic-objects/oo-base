@@ -97,6 +97,7 @@
                                         <sourceDirectory>src/test/java</sourceDirectory>
                                     </sourceDirectories>
                                     <configLocation>checkstyle.xml</configLocation>
+                                    <headerLocation>LICENSE</headerLocation>
                                     <logViolationsToConsole>true</logViolationsToConsole>
                                     <failsOnError>true</failsOnError>
                                     <failOnViolation>true</failOnViolation>

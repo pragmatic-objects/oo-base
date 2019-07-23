@@ -53,7 +53,7 @@
     </module>
     
     <module name="Header">
-        <property name="header" value="LICENSE.md"/>
+        <property name="headerFile" value="${checkstyle.header.file}"/>
         <property name="fileExtensions" value="java"/>
     </module>
 </module>
