@@ -92,12 +92,10 @@
                         <executions>
                             <execution>
                                 <configuration>
-                                    <sourceDirectories>
-                                        <sourceDirectory>src/main/java</sourceDirectory>
-                                        <sourceDirectory>src/test/java</sourceDirectory>
-                                    </sourceDirectories>
+                                    <includeResources>true</includeResources>
+                                    <includeTestResources>true</includeTestResources>
+                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <configLocation>checkstyle.xml</configLocation>
-                                    <headerLocation>LICENSE</headerLocation>
                                     <logViolationsToConsole>true</logViolationsToConsole>
                                     <failsOnError>true</failsOnError>
                                     <failOnViolation>true</failOnViolation>
@@ -120,6 +118,48 @@
                                 <version>0.0.0-SNAPSHOT</version>
                             </dependency>
                         </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>license-check</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <version>1.20</version>
+                        <executions>
+                            <execution>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>check-file-header</goal>
+                                    <goal>add-third-party</goal>
+                                    <goal>aggregate-add-third-party</goal>
+                                    <goal>download-licenses</goal>
+                                    <goal>aggregate-download-licenses</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <organizationName>Kapralov Sergey</organizationName>
+                            <inceptionYear>2019</inceptionYear>
+                            <licenseName>mit</licenseName>
+                            <force>true</force>
+                            <processStartTag>===========================================================================</processStartTag>
+                            <processEndTag>============================================================================</processEndTag>
+                            <sectionDelimiter>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</sectionDelimiter>
+                            <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                            <failOnMissing>true</failOnMissing>
+                            <failIfWarning>true</failIfWarning>
+                            <failOnBlacklist>true</failOnBlacklist>
+                            <failOnMissingHeader>true</failOnMissingHeader>
+                            <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
