@@ -13,6 +13,7 @@
     <modules>
         <module>base-checkstyle</module>
         <module>base-parent</module>
+        <module>base-parent-equivalence</module>
     </modules>
 
     <name>OO-Base</name>
