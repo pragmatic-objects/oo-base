@@ -7,3 +7,4 @@
 **/jacoco.exec
 **/*.versionsBackup
 /atom-basis/nbproject/
+/target/
