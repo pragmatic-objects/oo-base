@@ -149,10 +149,6 @@
                                 <phase>process-sources</phase>
                                 <goals>
                                     <goal>check-file-header</goal>
-                                    <goal>add-third-party</goal>
-                                    <goal>aggregate-add-third-party</goal>
-                                    <goal>download-licenses</goal>
-                                    <goal>aggregate-download-licenses</goal>
                                 </goals>
                             </execution>
                         </executions>
