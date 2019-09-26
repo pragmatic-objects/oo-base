@@ -106,6 +106,12 @@
                                     <includeResources>true</includeResources>
                                     <includeTestResources>true</includeTestResources>
                                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                                    <sourceDirectories>
+                                        <sourceDirectory>src/main/java</sourceDirectory>
+                                    </sourceDirectories>
+                                    <testSourceDirectories>
+                                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                                    </testSourceDirectories>
                                     <configLocation>checkstyle.xml</configLocation>
                                     <logViolationsToConsole>true</logViolationsToConsole>
                                     <failsOnError>true</failsOnError>
