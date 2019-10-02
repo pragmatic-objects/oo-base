@@ -9,6 +9,17 @@
     <artifactId>base-parent</artifactId>
     <packaging>pom</packaging>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <trimStackTrace>false</trimStackTrace>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <profiles>
         <profile>
             <id>extras</id>
@@ -92,10 +103,15 @@
                         <executions>
                             <execution>
                                 <configuration>
+                                    <includeResources>true</includeResources>
+                                    <includeTestResources>true</includeTestResources>
+                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                     <sourceDirectories>
                                         <sourceDirectory>src/main/java</sourceDirectory>
-                                        <sourceDirectory>src/test/java</sourceDirectory>
                                     </sourceDirectories>
+                                    <testSourceDirectories>
+                                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                                    </testSourceDirectories>
                                     <configLocation>checkstyle.xml</configLocation>
                                     <logViolationsToConsole>true</logViolationsToConsole>
                                     <failsOnError>true</failsOnError>
@@ -111,7 +127,7 @@
                             <dependency>
                                 <groupId>com.puppycrawl.tools</groupId>
                                 <artifactId>checkstyle</artifactId>
-                                <version>8.22</version>
+                                <version>8.25</version>
                             </dependency>
                             <dependency>
                                 <groupId>com.pragmaticobjects.oo.base</groupId>
@@ -119,6 +135,44 @@
                                 <version>0.0.0-SNAPSHOT</version>
                             </dependency>
                         </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>license-check</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <version>1.20</version>
+                        <executions>
+                            <execution>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>check-file-header</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <organizationName>Kapralov Sergey</organizationName>
+                            <inceptionYear>2019</inceptionYear>
+                            <licenseName>mit</licenseName>
+                            <force>true</force>
+                            <processStartTag>===========================================================================</processStartTag>
+                            <processEndTag>============================================================================</processEndTag>
+                            <sectionDelimiter>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</sectionDelimiter>
+                            <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                            <failOnMissing>true</failOnMissing>
+                            <failIfWarning>true</failIfWarning>
+                            <failOnBlacklist>true</failOnBlacklist>
+                            <failOnMissingHeader>true</failOnMissingHeader>
+                            <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
