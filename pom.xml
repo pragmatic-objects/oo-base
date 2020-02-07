@@ -14,6 +14,7 @@
         <module>base-checkstyle</module>
         <module>base-parent</module>
         <module>base-parent-equivalence</module>
+        <module>base-pmd</module>
     </modules>
 
     <name>OO-Base</name>
@@ -80,6 +81,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.12.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
